@@ -1,0 +1,32 @@
+####################################################################
+#
+# Generate a 10 to 50 MeV muon with an isotropic distribution.
+#
+# To generate 10 events, this can be run using edep-sim with the command
+#
+#  edep-sim -u -e 200 -g Module0.gdml -o muon_output/muon50.root muon_output/muon-50.mac
+#
+
+# Create the first particle source.  This source will be used to
+# specify the position of the vertex.  The any of the GPS direction
+# and energy commands can be used.
+/gps/particle mu-
+/gps/energy 90 MeV
+
+# This generates the position of the particle gun.  It can be
+# used for the other particle guns to create a multi particle event.  The
+# /gps/position command must come first.
+/gps/position 0.0 0.0 -15.0 cm
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1 cm
+/gps/pos/halfy 1 cm
+/gps/pos/halfz 1 cm
+/gps/pos/type Point
+/gps/pos/centre 0.0 0.0 0.0 m
+/gps/direction 0.0 0 -1.0
+
+# Make an isotropic particle gun.
+/gps/ang/type iso
+
+# Do not include /run/beamOn here.

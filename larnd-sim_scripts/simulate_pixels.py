@@ -105,6 +105,7 @@ def run_simulation(input_filename,
 
     TPB = 256
     BPG = ceil(tracks.shape[0] / TPB)
+    print(tracks.shape)
 
     print("*******************\nSTARTING SIMULATION\n*******************")
     # We calculate the number of electrons after recombination (quenching module)
